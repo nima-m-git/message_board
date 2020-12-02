@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+// const re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
-const validateEmail = (email) => re.test(email);
+// const validateEmail = (email) => re.test(email);
 
 const UserSchema = new Schema(
     {
@@ -14,9 +14,9 @@ const UserSchema = new Schema(
             trim: true, 
         },
         email: { 
-            type: email, 
-            validate: [validateEmail, 'Please fill a valid email address'],
-            match: [re, 'Please fill a valid email address'],
+            type: String, 
+            // validate: [validateEmail, 'Please fill a valid email address'],
+            // match: [re, 'Please fill a valid email address'],
         },
         password: {
             type: String,
@@ -41,7 +41,7 @@ const UserSchema = new Schema(
 // Virtual for user url
 UserSchema
 .virtual('url')
-.get(() => '/users/user/' + this._id);
+.get(() => '/user/' + this._id);
 
 // Virtual for user fullname
 UserSchema

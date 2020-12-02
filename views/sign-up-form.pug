@@ -1,0 +1,29 @@
+extends layout
+
+block content
+    h1 Sign Up
+    form(action='' method='POST')
+        label(for='firstName') First Name
+        input(name='firstName' type='text')
+
+        label(for='lastName') Last Name
+        input(name='lastName' type='text')
+
+        label(for='email') Email
+        input(name='email' type='text')
+
+        label(for='username') Username
+        input(name='username' type='text')
+
+        label(for='password') Password
+        input(name='password' type='password')
+
+        label(for='confirm-password') Confirm Password
+        input(name='confirm-password' type='password') 
+
+        button(type='submit') Sign Up
+
+    if errors 
+        ul
+            for error in errors
+                li= error.msg
