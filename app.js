@@ -8,13 +8,13 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const bcrypt = require('bcryptjs');
 const flash = require('connect-flash');
+const { env } = require('process');
 require('dotenv').config();
 
 const User = require('./models/user');
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 // const messagesRouter = require('./routes/messages');
-const { env } = require('process');
 
 const app = express();
 
@@ -58,6 +58,11 @@ app.use(session({ secret: 'SOMESECRET', resave: false, saveUninitialized: true, 
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.urlencoded({ extended: false }));
+// set user in locals to be used globally by all templates
+app.use((req, res, next) => {
+  res.locals.user = req.user;
+  next();
+})
 
 app.use(logger('dev'));
 app.use(express.json());

@@ -8,9 +8,9 @@ const user_controller = require('../controllers/userController');
 // router.get('/user', user_controller.index);
 
 // Create user
-router.get('/create', user_controller.user_create_get);
+router.get('/signup', user_controller.signup_get);
 
-router.post('/create', user_controller.user_create_post);
+router.post('/signup', user_controller.signup_post);
 
 // Login
 router.get('/login', user_controller.login_get);

@@ -6,9 +6,9 @@ const User = require('../models/user');
 
 
 // User sign up
-exports.user_create_get = (req, res) => res.render('sign-up-form');
+exports.signup_get = (req, res) => res.render('sign-up-form');
 
-exports.user_create_post = [
+exports.signup_post = [
     body('firstName', 'First name must be specified').trim().isLength({ min: 1}).escape(),
     body('lastName', 'Last name must be specified').trim().isLength({ min: 1}).escape(),
     body('email', 'Must be valid email').isEmail()
