@@ -3,22 +3,18 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-
 const session = require('express-session');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
+const bcrypt = require('bcryptjs');
+const flash = require('connect-flash');
 require('dotenv').config();
 
+const User = require('./models/user');
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 // const messagesRouter = require('./routes/messages');
 const { env } = require('process');
-
-
-
-const User = require('./models/user');
-const bcrypt = require('bcryptjs');
-const flash = require('connect-flash');
 
 const app = express();
 
@@ -32,9 +28,6 @@ db.on('error', console.error.bind(console, 'mongo connection error'));
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
-
-
-
 
 // passport user authentication
 passport.use(new LocalStrategy(
@@ -76,15 +69,6 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 // app.use('/messages', messageRouter);
 
-app.get('/login', (req, res) => res.render('login', { error: req.flash('error')}));
-
-app.post('/login',
-  passport.authenticate('local', {
-    successRedirect: '/',
-    failureRedirect: '/login',
-    failureFlash: true,
-  })
-);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

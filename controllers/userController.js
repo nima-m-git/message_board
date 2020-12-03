@@ -63,12 +63,10 @@ exports.user_create_post = [
 ]
 
 // User login
-exports.login_get = (req, res) => res.render('login');
+exports.login_get = (req, res) => res.render('login', { error: req.flash('error')});
 
-exports.login_post = (req, res) => {
-    passport.authenticate('local', { 
-        successRedirect: '/',
-        failureRedirect: '/users/login',
-        failureFlash: true
-    });
-}
+exports.login_post = passport.authenticate('local', {
+    successRedirect: '/',
+    failureRedirect: '/users/login',
+    failureFlash: true,
+});
