@@ -3,25 +3,31 @@ extends layout
 block content
     h1 Sign Up
     form(action='' method='POST')
-        label(for='firstName') First Name
-        input(name='firstName' type='text' value!=((firstName) ? firstName : ''))
+        div
+            label(for='firstName') First Name
+            input(name='firstName' type='text' value!=((firstName) ? firstName : ''))
 
-        label(for='lastName') Last Name
-        input(name='lastName' type='text' value!=((lastName) ? lastName : ''))
+        div
+            label(for='lastName') Last Name
+            input(name='lastName' type='text' value!=((lastName) ? lastName : ''))
 
-        label(for='email') Email
-        input(name='email' type='text' value!=((email) ? email : ''))
+        div
+            label(for='email') Email
+            input(name='email' type='text' value!=((email) ? email : ''))
 
-        label(for='username') Username
-        input(name='username' type='text' value!=((username) ? username : ''))
+        div
+            label(for='username') Username
+            input(name='username' type='text' value!=((username) ? username : ''))
 
-        label(for='password') Password
-        input(name='password' type='password')
+        div
+            label(for='password') Password
+            input(name='password' type='password')
 
-        label(for='confirm-password') Confirm Password
-        input(name='confirm-password' type='password') 
-
-        button(type='submit') Sign Up
+        div
+            label(for='confirm-password') Confirm Password
+            input(name='confirm-password' type='password') 
+        div
+            button(type='submit') Sign Up
 
     hr
     if errors 

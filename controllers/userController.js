@@ -1,14 +1,12 @@
+const passport = require('passport');
 const bcrypt = require('bcryptjs');
 const { body, validationResult } = require('express-validator');
 
 const User = require('../models/user');
 
 
-
 // User sign up
-exports.user_create_get = (req, res) => {
-    res.render('sign-up-form');
-}
+exports.user_create_get = (req, res) => res.render('sign-up-form');
 
 exports.user_create_post = [
     body('firstName', 'First name must be specified').trim().isLength({ min: 1}).escape(),
@@ -64,3 +62,13 @@ exports.user_create_post = [
     }
 ]
 
+// User login
+exports.login_get = (req, res) => res.render('login');
+
+exports.login_post = (req, res) => {
+    passport.authenticate('local', { 
+        successRedirect: '/',
+        failureRedirect: '/users/login',
+        failureFlash: true
+    });
+}

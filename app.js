@@ -14,6 +14,12 @@ const usersRouter = require('./routes/users');
 // const messagesRouter = require('./routes/messages');
 const { env } = require('process');
 
+
+
+const User = require('./models/user');
+const bcrypt = require('bcryptjs');
+const flash = require('connect-flash');
+
 const app = express();
 
 // Set up mongoose connection
@@ -28,6 +34,33 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
 
+
+
+// passport user authentication
+passport.use(new LocalStrategy(
+  (username, password, done) => {
+    User.findOne({ username, }, (err, user) => {
+      if (err) { return done(err); }
+      if (!user) {
+        return done(null, false, { message: 'Incorrect username' });
+      }
+      bcrypt.compare(password, user.password, (err, res) => {
+        if (res) {
+            // passwords match, log in user
+            return done(null, user)
+        } else {
+            // passwords dont match
+            return done(null, false, { message: 'Incorrect password'})
+        }
+      })
+    });
+  }
+));
+
+passport.serializeUser((user, done) => done(null, user.id));
+passport.deserializeUser((id, done) => User.findById(id, (err, user) => done(err, user)));
+
+app.use(flash());
 app.use(session({ secret: 'SOMESECRET', resave: false, saveUninitialized: true, }));
 app.use(passport.initialize());
 app.use(passport.session());
@@ -42,6 +75,16 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 // app.use('/messages', messageRouter);
+
+app.get('/login', (req, res) => res.render('login', { error: req.flash('error')}));
+
+app.post('/login',
+  passport.authenticate('local', {
+    successRedirect: '/',
+    failureRedirect: '/login',
+    failureFlash: true,
+  })
+);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
