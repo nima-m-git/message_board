@@ -60,7 +60,7 @@ exports.signup_post = [
         });
 
     }
-]
+];
 
 // User login
 exports.login_get = (req, res) => res.render('login', { error: req.flash('error')});
@@ -70,3 +70,9 @@ exports.login_post = passport.authenticate('local', {
     failureRedirect: '/users/login',
     failureFlash: true,
 });
+
+// User logout
+exports.logout = (req, res) => {
+    req.logout();
+    res.redirect('/');
+};

@@ -19,6 +19,7 @@ html
           .user-or-login
             if user
               p Welcome #{user.username}!
+              a(href='/users/logout') Log Out
             else
               a(href='/users/login') Log In
               a(href='/users/signup') Sign Up
