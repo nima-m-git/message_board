@@ -15,8 +15,6 @@ const UserSchema = new Schema(
         },
         email: { 
             type: String, 
-            // validate: [validateEmail, 'Please fill a valid email address'],
-            // match: [re, 'Please fill a valid email address'],
         },
         password: {
             type: String,

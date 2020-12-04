@@ -8,7 +8,7 @@ const MessageSchema = new Schema(
             required: true,
             maxlength: 100,
         },
-        text: {
+        content: {
             type: String,
             required: true,
             maxlength: 5000,
@@ -27,4 +27,8 @@ const MessageSchema = new Schema(
 // Virtual for message's URL
 MessageSchema
 .virtual('url')
-.get(() => '/messages/' + this._id);
+.get(function () {
+    return '/messages/' + this._id;
+}); 
+
+module.exports = mongoose.model('Message', MessageSchema);

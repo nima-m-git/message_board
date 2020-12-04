@@ -1,0 +1,12 @@
+extend layout
+
+block content
+    .message-detail
+        p #{title}
+        hr
+        p= content
+        hr
+        if user
+            if user.membership === 'member' || user.membership === 'moderator'
+                p= author.username
+                p= timestamp

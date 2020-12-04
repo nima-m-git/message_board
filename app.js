@@ -14,7 +14,7 @@ require('dotenv').config();
 const User = require('./models/user');
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
-// const messagesRouter = require('./routes/messages');
+const messagesRouter = require('./routes/messages');
 
 const app = express();
 
@@ -72,7 +72,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-// app.use('/messages', messageRouter);
+app.use('/messages', messagesRouter);
 
 
 // catch 404 and forward to error handler
@@ -89,7 +89,7 @@ app.use(function(err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render('error');
-  console.log(err)
+  console.log({ err, })
 });
 
 module.exports = app;

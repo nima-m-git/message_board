@@ -12,7 +12,13 @@ html
     .container-fluid
       .row
 
-        .col-sm-10
+        .col-sm-2
+          block sidebar
+            .sidebar-nav
+              if user
+                a(href='messages/create') Create Message
+
+        .col-sm-8
           block content
 
         .col-sm-2
@@ -21,5 +27,5 @@ html
               p Welcome #{user.username}!
               a(href='/users/logout') Log Out
             else
-              a(href='/users/login') Log In
+              a(href='/users/login') Log In  
               a(href='/users/signup') Sign Up

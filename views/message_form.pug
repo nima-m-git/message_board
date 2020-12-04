@@ -1,0 +1,18 @@
+extends layout
+
+block content
+    form(action='' method='POST')
+        .form-group
+            label(for='title') Title
+            input(type='text' name='title')
+        .form-group
+            label(for='content') Content
+            input(type='textarea' name='content')
+
+        button(type='submit') Submit
+        
+    hr
+    if errors 
+        ul
+            each error in errors
+                li!= error.msg
