@@ -8,5 +8,5 @@ block content
         hr
         if user
             if user.membership === 'member' || user.membership === 'moderator'
-                p= author.username
+                a(href=author.url) #{author.username}
                 p= timestamp

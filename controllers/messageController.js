@@ -3,28 +3,30 @@ const Message = require('../models/message');
 
 const { body, validationResult } = require('express-validator');
 
-
-// Display all messages, exclusive members see authors and timestamps
-exports.index = (req, res, next) => {
-    Message.find({}, 'title timestamp author')
-        .populate('author')
-        .sort('-timestamp')
-        .exec((err, messages) => {
-            if (err) { return next(err); }
-            res.render('message_list', { messages });
-        });
-};
-
 // Display details for specific message
 exports.message_detail = (req, res, next) => {
-    Message.findById(req.params.id).populate('author').exec((err, message) => {
-        if (err) { return next(err); }
-        if (!message) {
-            const err = new Error('message not found');
-            err.status = 404;
-            return next(err);
-        }
-        res.render('message_detail', { ...message._doc, });
+    Message.findById(req.params.id)
+        .populate('author')
+        .exec((err, message) => {
+            if (err) { return next(err); }
+            if (!message) {
+                const err = new Error('message not found');
+                err.status = 404;
+                return next(err);
+            }
+            res.render('message_detail', { ...message._doc, });
+    });
+}
+
+// Display message index, list of all messages
+// TODO - break list into pages
+exports.message_index = (req, res, next) => {
+    Message.find({}, 'title author timestamp')
+        .populate('author')
+        .sort('-timestamp')
+        .exec((err, message_list) => {
+            if (err) { return next(err); }
+            res.render('message_list', { message_list, })
     });
 }
 
