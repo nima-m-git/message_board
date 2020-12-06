@@ -1,15 +1,18 @@
 extend layout
 
 block content
-    h2 Messages
 
-    ul.message-list
-        each message in message_list
-            li
-                p  
-                    a(href=message.url) #{message.title}
-                |   
-                if user
-                    if user.membership === 'member' || user.membership === 'moderator'
-                        p= message.author.username
-                        p= message.timestamp
+    h2 Messages
+    each message in message_list
+        .card.m-2.w-50
+            span.card-header
+                a.h4(href=message.url) #{message.title}
+            
+            .card-body
+                p.card-text= message.content || 'no content..'
+            if user
+                if user.membership === 'member' || user.membership === 'moderator'
+                    .card-footer.d-flex.flex-nowrap.justify-content-between
+                        span Posted by: #{message.author.username}
+                        | 
+                        span on #{message.timestamp.toLocaleString()}

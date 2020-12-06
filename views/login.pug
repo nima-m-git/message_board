@@ -1,20 +1,19 @@
 extend layout
 
 block content
-    h1 Please log in.
     form(action='login' method='post')
-        div 
+        h2.text-center Please log in.
+        .form-group 
             label(for='username') Username: 
-            input(name='username' type='text')
-        div
+            input.form-control(name='username' type='text')
+        .form-group
             label(for='password') Password: 
-            input(name='password' type='password')
-        div
-            button(type='submit') Log In
-    
-    p or 
-        |
-        a(href='/users/signup') Sign Up.
+            input.form-control(name='password' type='password')
+        .text-center
+            button.btn.btn-primary(type='submit') Log In
+            div or 
+                a(href='/users/signup') Sign Up.        
+
 
     if error
         p= error

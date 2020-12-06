@@ -1,8 +1,18 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+
+
+/* Forms */
+form {
+  padding: 2em;
+  border: 0.5px solid rgba(177, 177, 177, 0.705);
+  border-radius: 5px;
 }
 
-a {
-  color: #00B7FF;
+input {
+  border-radius: 5px;
+  border: 0.5px solid rgba(177, 177, 177, 0.705);
 }
+
+h2 {
+  margin-bottom: 0.5em;
+}
+

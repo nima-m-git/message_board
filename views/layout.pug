@@ -9,30 +9,26 @@ html
     script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js", integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV", crossorigin="anonymous")
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
+      
+    .d-flex.flex-column.flex-md-row.align-items-center.p-3.px-md-4.mb-3.bg-white.border-bottom.shadow-sm
+      a.mr-md-auto(href='/') 
+        h5.my-o.mr-md-auto.font-weight-normal OnlyMembers
+
+      nav.my-2.my-md-0.mr-md-3
+        a.p-2(href='/messages') View Messages
+        
+        if user
+          a.p-2(href='messages/create') Create Message
+          
+          a.p-2(href='users/membership') Membership
+
+        if user
+          a.p-2(href='/users/logout') Log Out
+        else
+          a.p-2(href='/users/login') Log In  
+          a.p-2(href='/users/signup') Sign Up
+
     .container-fluid
-      .row
+      .d-flex.flex-column.align-items-center
+        block content
 
-        .col-sm-2
-          block sidebar
-            .sidebar-nav
-              p
-                a(href='/messages') View Messages
-              | 
-              if user
-                p
-                  a(href='messages/create') Create Message
-                | 
-                p 
-                  a(href='users/membership') Membership
-
-        .col-sm-8
-          block content
-
-        .col-sm-2
-          .user-or-login
-            if user
-              p Welcome #{user.username}!
-              a(href='/users/logout') Log Out
-            else
-              a(href='/users/login') Log In  
-              a(href='/users/signup') Sign Up

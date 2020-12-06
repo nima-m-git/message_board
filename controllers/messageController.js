@@ -21,7 +21,7 @@ exports.message_detail = (req, res, next) => {
 // Message index, list of all messages
 // TODO - break list into pages
 exports.message_index = (req, res, next) => {
-    Message.find({}, 'title author timestamp')
+    Message.find({})
         .populate('author')
         .sort('-timestamp')
         .exec((err, message_list) => {
@@ -81,5 +81,5 @@ exports.message_delete_post = (req, res, next) => {
     Message.findByIdAndRemove(req.params.id, (err) => {
         if (err) { return next(err); }
         res.redirect('/messages');
-    })
+    });
 }
