@@ -15,10 +15,15 @@ html
         .col-sm-2
           block sidebar
             .sidebar-nav
-              a(href='/messages') View Messages
+              p
+                a(href='/messages') View Messages
               | 
               if user
-                a(href='messages/create') Create Message
+                p
+                  a(href='messages/create') Create Message
+                | 
+                p 
+                  a(href='users/membership') Membership
 
         .col-sm-8
           block content

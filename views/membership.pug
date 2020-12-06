@@ -1,0 +1,26 @@
+extends layout
+
+block content
+
+    h2 Membership
+
+    p Membership type: 
+        span.membership-type #[strong #{membership || user.membership}]
+    
+    form(action='' method='POST')
+        .form-group
+            label(for='code') Upgrade Code: 
+            input(name='code' type='text')
+        button.btn.btn-primary(type='submit') Enter
+
+    | 
+
+    .membership-change-attempt
+        if attempted
+            if status
+                p Congrats, you now have #[strong #{membership}] membership!
+            else 
+                - var quote = (membership === 'member') ? 'consider yourself lucky.' : (membership === 'moderator') ? 'you are a god, why would you want to change?' : 'peasant.';
+                p Your membership remains #[strong #{membership}], #{quote}
+
+                    

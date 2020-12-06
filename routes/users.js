@@ -20,19 +20,10 @@ router.post('/login', user_controller.login_post);
 // Logout
 router.get('/logout', user_controller.logout);
 
-// // GET request to delete user.
-// router.get('/:id/delete', user_controller.user_delete_get);
+// Membership page
+router.get('/membership', user_controller.membership_get);
 
-// // POST request to delete user.
-// router.post('/:id/delete', user_controller.user_delete_post);
+router.post('/membership', user_controller.membership_post);
 
-// // GET request to update user.
-// router.get('/:id/update', user_controller.user_update_get);
-
-// // POST request to update user.
-// router.post('/:id/update', user_controller.user_update_post);
-
-// // GET request for one user.
-// router.get('/:id', user_controller.user_detail);
 
 module.exports = router;

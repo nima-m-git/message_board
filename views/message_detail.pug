@@ -2,11 +2,17 @@ extend layout
 
 block content
     .message-detail
-        p #{title}
+        p= message.title
         hr
-        p= content
+        p= message.content
         hr
         if user
             if user.membership === 'member' || user.membership === 'moderator'
-                a(href=author.url) #{author.username}
-                p= timestamp
+                a(href=message.author.url) #{message.author.username}
+                p= message.timestamp
+            if user.membership === 'moderator'
+                form(action=`${message.url}/delete` method='POST')
+                    button.btn.btn-primary(type='submit' onclick='return confirm("Are you sure?")') Delete
+
+
+        
