@@ -1,18 +1,25 @@
 extend layout
 
 block content
-    .message-detail
-        p= message.title
-        hr
-        p= message.content
-        hr
+    .message-detail.card.m-2.w-50
+        span.card-header
+            a.h4(href=message.url) #{message.title}
+        
+        .card-body
+            p.card-text= message.content || 'no content..'
         if user
             if user.membership === 'member' || user.membership === 'moderator'
-                a(href=message.author.url) #{message.author.username}
-                p= message.timestamp
-            if user.membership === 'moderator'
-                form(action=`${message.url}/delete` method='POST')
-                    button.btn.btn-primary(type='submit' onclick='return confirm("Are you sure?")') Delete
+                .card-footer.d-flex.flex-nowrap.justify-content-between
+                    span Posted by: #{message.author.username}
+                    | 
+                    span on #{message.timestamp.toLocaleString()}
+
+    if user
+        if user.membership === 'moderator'
+            form.delete-btn(action=`${message.url}/delete` method='POST')
+                button.btn.btn-secondary(type='submit' onclick='return confirm("Are you sure?")') Delete
+
+
 
 
         

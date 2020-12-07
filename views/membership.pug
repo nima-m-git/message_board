@@ -4,14 +4,18 @@ block content
 
     h2 Membership
 
+    p Welcome #{user.username}
+
     p Membership type: 
         span.membership-type #[strong #{membership || user.membership}]
     
-    form(action='' method='POST')
-        .form-group
+    
+    form.m-2(action='' method='POST')
+        .form-group.text-center
             label(for='code') Upgrade Code: 
-            input(name='code' type='text')
-        button.btn.btn-primary(type='submit') Enter
+            input.form-control(name='code' type='text')
+        .text-center
+            button.btn.btn-secondary(type='submit') Enter
 
     | 
 
@@ -22,5 +26,14 @@ block content
             else 
                 - var quote = (membership === 'member') ? 'consider yourself lucky.' : (membership === 'moderator') ? 'you are a god, why would you want to change?' : 'peasant.';
                 p Your membership remains #[strong #{membership}], #{quote}
+    
+    .membership-tips.text-center.mt-4
+        div Being a member of the club is pretty 
+            span.i exclusive, 
+            span you can see who and when wrote posts.
+
+        div To be a moderator, you really need to be a 
+            span.i person in a position of charge. 
+            span You will have the ability to delete posts.
 
                     

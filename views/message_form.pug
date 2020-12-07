@@ -2,14 +2,15 @@ extends layout
 
 block content
     form(action='' method='POST')
+        h4.text-center New Message
         .form-group
             label(for='title') Title
-            input(type='text' name='title')
+            input.form-control(type='text' name='title')
         .form-group
             label(for='content') Content
-            input(type='textarea' name='content')
-
-        button(type='submit') Submit
+            input.form-control(type='textarea' name='content')
+        .text-center
+            button.btn.btn-secondary(type='submit') Submit
         
     hr
     if errors 

@@ -1,18 +1,79 @@
+body {
+  height: 100%;
+  background: rgba(0, 0, 0, 0.959);
+  color: white;
+}
 
+a {
+  color: rgb(226, 226, 226);
+  text-shadow: 0.5px 0.5px rgb(68, 48, 29);
+  font-size: 1.1em;
+}
+
+a:hover {
+  color: rgb(90, 54, 13);
+  text-decoration: none;
+}
+
+.i {
+  font-style: italic;
+}
+
+/* Navbar */
+.navbar {
+  background: linear-gradient(rgba(173, 110, 14, 0.774), rgba(212, 160, 29, 0.774));
+  border-bottom: 0.5px solid goldenrod;
+  box-shadow: 0 1px 2px 1px goldenrod;
+}
+
+/* Container */
+.container-fluid {
+  padding: 1em;
+}
 
 /* Forms */
 form {
   padding: 2em;
-  border: 0.5px solid rgba(177, 177, 177, 0.705);
+  border: 0.5px solid goldenrod;
   border-radius: 5px;
+  background: rgb(99, 80, 55);
 }
 
-input {
+.form-control {
   border-radius: 5px;
-  border: 0.5px solid rgba(177, 177, 177, 0.705);
+  border: 0.5px solid goldenrod;
+  background: rgb(179, 166, 146);
 }
 
 h2 {
   margin-bottom: 0.5em;
 }
 
+/* Cards */
+.card {
+  border: 0.5px solid goldenrod;
+}
+
+.card-header {
+  background-color: rgb(129, 110, 69);
+  border-bottom: 0.5px solid rgb(104, 60, 31);
+}
+
+.card-footer {
+  background-color: rgb(0, 0, 0);
+  color: goldenrod;
+  border-top: 0.5px solid goldenrod;
+}
+
+.card-body {
+  background-color: rgb(105, 89, 67);
+}
+
+.btn-secondary {
+  border: 0.5px solid rgba(70, 63, 63, 0.781);
+}
+
+.delete-btn {
+  background: none;
+  border: none;
+}

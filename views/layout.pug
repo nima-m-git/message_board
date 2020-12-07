@@ -10,17 +10,17 @@ html
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
       
-    .d-flex.flex-column.flex-md-row.align-items-center.p-3.px-md-4.mb-3.bg-white.border-bottom.shadow-sm
+    .navbar.d-flex.flex-column.flex-md-row.align-items-center.p-3.px-md-4
       a.mr-md-auto(href='/') 
-        h5.my-o.mr-md-auto.font-weight-normal OnlyMembers
+        h5.my-o.mr-md-auto OnlyMembers
 
       nav.my-2.my-md-0.mr-md-3
         a.p-2(href='/messages') View Messages
         
         if user
-          a.p-2(href='messages/create') Create Message
+          a.p-2(href='/messages/create') Create Message
           
-          a.p-2(href='users/membership') Membership
+          a.p-2(href='/users/membership') Membership
 
         if user
           a.p-2(href='/users/logout') Log Out
@@ -29,6 +29,6 @@ html
           a.p-2(href='/users/signup') Sign Up
 
     .container-fluid
-      .d-flex.flex-column.align-items-center
+      .d-flex.flex-column.align-items-center.mt-5
         block content
 
