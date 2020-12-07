@@ -19,7 +19,7 @@ const messagesRouter = require('./routes/messages');
 const app = express();
 
 // Set up mongoose connection
-const mongoDB = process.env.MONGO_URI || process.env.DEV_DB;
+const mongoDB = process.env.MONGODB_URI || process.env.DEV_DB;
 const mongoose = require('mongoose');
 mongoose.connect(mongoDB, { useUnifiedTopology: true, useNewUrlParser: true });
 const db = mongoose.connection;

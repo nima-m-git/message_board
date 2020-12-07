@@ -23,8 +23,8 @@ a:hover {
 
 /* Navbar */
 .navbar {
-  background: linear-gradient(rgba(173, 110, 14, 0.774), rgba(212, 160, 29, 0.774));
-  box-shadow: 0 0 2px 2px goldenrod;
+  background: linear-gradient(rgba(192, 100, 13, 0.774), rgba(197, 137, 58, 0.774));
+  box-shadow: 0 0 2px 2px rgba(161, 83, 19, 0.76);
 }
 
 .logo {
@@ -58,12 +58,13 @@ h2 {
 
 /* Cards */
 .card {
-  border: 0.5px solid rgba(124, 94, 19, 0.829);
+  border: 0.5px solid rgba(145, 109, 19, 0.829);
+  box-shadow: 0 0 3px 1px rgba(218, 165, 32, 0.568);
 }
 
 .card-header {
   background-color: rgb(165, 145, 103);
-  border-bottom: 0.5px solid rgba(104, 60, 31, 0.521);
+  border-bottom: 1px solid rgba(65, 29, 5, 0.527);
 }
 
 .card-footer {
