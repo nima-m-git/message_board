@@ -1,7 +1,9 @@
 body {
   height: 100%;
-  background: rgba(0, 0, 0, 0.959);
-  color: white;
+  background: rgba(32, 32, 32, 0.959);
+  color: whitesmoke;
+  font-family: "HKGrotesk", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 400;
 }
 
 a {
@@ -11,7 +13,7 @@ a {
 }
 
 a:hover {
-  color: rgb(90, 54, 13);
+  color: rgb(167, 156, 143);
   text-decoration: none;
 }
 
@@ -22,8 +24,12 @@ a:hover {
 /* Navbar */
 .navbar {
   background: linear-gradient(rgba(173, 110, 14, 0.774), rgba(212, 160, 29, 0.774));
-  border-bottom: 0.5px solid goldenrod;
-  box-shadow: 0 1px 2px 1px goldenrod;
+  box-shadow: 0 0 2px 2px goldenrod;
+}
+
+.logo {
+  font-family: cursive;
+  color: rgb(255, 244, 193);
 }
 
 /* Container */
@@ -33,16 +39,17 @@ a:hover {
 
 /* Forms */
 form {
+  background: rgba(95, 78, 62, 0.767);
   padding: 2em;
-  border: 0.5px solid goldenrod;
+  border: 0.5px solid rgba(218, 165, 32, 0.301);
   border-radius: 5px;
-  background: rgb(99, 80, 55);
+  box-shadow: 0 0 5px 2px rgba(218, 165, 32, 0.568);
 }
 
 .form-control {
   border-radius: 5px;
   border: 0.5px solid goldenrod;
-  background: rgb(179, 166, 146);
+  background: rgb(156, 144, 125);
 }
 
 h2 {
@@ -51,26 +58,31 @@ h2 {
 
 /* Cards */
 .card {
-  border: 0.5px solid goldenrod;
+  border: 0.5px solid rgba(124, 94, 19, 0.829);
 }
 
 .card-header {
-  background-color: rgb(129, 110, 69);
-  border-bottom: 0.5px solid rgb(104, 60, 31);
+  background-color: rgb(165, 145, 103);
+  border-bottom: 0.5px solid rgba(104, 60, 31, 0.521);
 }
 
 .card-footer {
-  background-color: rgb(0, 0, 0);
+  background-color: rgb(68, 60, 51);
   color: goldenrod;
   border-top: 0.5px solid goldenrod;
 }
 
 .card-body {
-  background-color: rgb(105, 89, 67);
+  background: rgba(87, 49, 30, 0.829);
 }
 
 .btn-secondary {
-  border: 0.5px solid rgba(70, 63, 63, 0.781);
+  border: 0.5px solid rgba(70, 66, 63, 0.781);
+  background-color: rgba(182, 80, 32, 0.774);
+}
+
+.btn-secondary:hover {
+  background-color: rgb(148, 87, 47);
 }
 
 .delete-btn {
